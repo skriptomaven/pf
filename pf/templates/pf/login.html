@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pf</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pf/login.css' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>login</h1>
+        <form action="{% url 'login_view' %}" method="POST">
+            {% csrf_token %}
+            <label for="username">username: <span><pf/signup.htmlpan></label>
+            <input type="username" class="input" name="username" id="username" placeholder="enter username">
+
+            <label for="password">password: <span></span></label>
+            <input type="password" class="input" name="password" id="userpassword" placeholder="enter password">
+
+            <input type="submit" value="login">
+            <div class="link"><a href="{% url 'signup_view' %}">create account</a></div>
+        </form>
+    </div>
+</body>
+
+</html>

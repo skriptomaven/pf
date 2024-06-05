@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pika flix</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pf/home.css' %}">
+
+</head>
+
+<body>
+    <div class="header">
+        <a href="{% url 'home_view' %}" class="logo">PikaFlix</a>
+        <input type="text" placeholder="Search" class="search-bar">
+        <a class="login" id="" href="{% url 'login_view' %}">Login</a>
+    </div>
+    <hr>
+    <div class="body-content">
+        <p>Hello new flixer, amazing videos about cooking and everything food are on the way!</p>
+    </div>
+</body>
+
+</html>
