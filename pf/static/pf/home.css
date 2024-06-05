@@ -1,0 +1,48 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+}
+
+.search-bar {
+    width: 300px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-right: 20px;
+    color: black;
+}
+
+.menu-icon {
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+}
+
+.login {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.body-content {
+    padding: 40%;
+}
