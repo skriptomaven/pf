@@ -1,34 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>pika flix</title>
-
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'pf/signup.css' %}">
-
 </head>
 
 <body>
-    <div class="container">
-        <h1>create account</h1>
-        <form action="{% url 'signup_view' %}" method="POST" id="">
-            {% csrf_token %}
-            <label for="username">username: <span></span></label>
-            <input type="text" class="input" name="username" id="user_name" placeholder="register username">
+    <form action="{% url 'signup' %}" method="POST" class="form-horizontal">
+        {% csrf_token%}
+        <div class="mx-auto" style="width: 400px;">
 
-            <label for="email">email: <span></span></label>
-            <input type="email" class="input" name="email" id="user_email" placeholder="register email">
-
-            <label for="password">password: <span></span></label>
-            <input type="password" class="input" name="password" id="user_pass" placeholder="register password">
-
-            <input type="submit" value="sign up">
-            <div class="link"><a href="{% url 'login_view' %}">login</a></div>
-        </form>
+            <div class="col-xs-8 col-xs-offset-4">
+                <h2 style="text-align:center;">create account</h2>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label for="username">username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username"
+                    Required>
+            </div>
+            <div class="form-group">
+                <label for="email">email address</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" Required>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password"
+                    Required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">confirm password</label>
+                <input type="password" class="form-control" name="confirm_password" id="confirm_password"
+                    placeholder="Confirm Your Password" Required>
+            </div>
+            <button type="submit" class="btn btn-primary">signup</button>
+            <a class="btn btn-dark" href="{% url 'login' %}" role="button">login</a>
+        </div>
+    </form>
+    <div class="form-group">
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
     </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
