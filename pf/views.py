@@ -53,9 +53,9 @@ def signup(request):
     else:
         return render(request, 'pf/signup.html', {})
 
-    def logout(request):
-        '''
-        Logs out user.
-        '''
-        auth.logout(request)
-        return redirect('home')
+def logout(request):
+    '''
+    Logs out user.
+    '''
+    auth.logout(request)
+    return redirect('home')
