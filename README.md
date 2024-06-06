@@ -3,7 +3,8 @@
 pika-flix is a Django web app to enable users share videos
 about cooking, food & hotel reviews.
 
-![image](https://github.com/skriptomaven/pf/assets/123072803/ffe83b2c-9ce4-4787-89c6-ca07280ac25d)
+![image](https://github.com/skriptomaven/pf/assets/123072803/1b96b949-c440-4f27-bd97-63be52e1279f)
+
 
 #### Quick start
 
