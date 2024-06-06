@@ -58,4 +58,10 @@ def logout(request):
     Logs out user.
     '''
     auth.logout(request)
-    return redirect('home')
+    return redirect(home)
+
+def video(request):
+    '''
+    Video view.
+    '''
+    return render(request, 'pf/video.html', {})
