@@ -47,16 +47,30 @@
 
     {% if user.is_authenticated %}
     <div class="profile-details" style="width: 200px; margin-left: 1300px; padding: 2px; word-spacing: 3px;">
-        <a href="{% url 'video' %}" style="text-decoration: underline;">flix a video</a>
+        <a href="{% url 'upload_video' %}" style="text-decoration: underline;">flix a video</a>
         <a href="#" style="text-decoration: underline;">profile</a>
         <a href="{% url 'logout' %}" style="text-decoration: underline;">logout</a>
     </div>
-    <div class="vid-are" style="padding: 25%;">
-        <p>Videos will appear here!</p>
+        <div class="vid-are" style="padding: 25%;">
+    {% for video in videos %}
+        <h3>{{ video.title }}</h3>
+        <video width="320" height="240" controls>
+                <source src="{{ videos.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
+        <p>{{ video.description }}</p>
+     {% endfor %}
     </div>
     {% else %}
     <div class="vid-are" style="padding: 25%;">
-        <p>Videos will appear here!</p>
+    {% for video in videos %}
+        <h3>{{ video.title }}</h3>
+        <video width="320" height="240" controls>
+                <source src="{{ videos.video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
+        <p>{{ video.description }}</p>
+     {% endfor %}
     </div>
     {% endif %}
 

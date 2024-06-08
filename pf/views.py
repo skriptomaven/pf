@@ -1,17 +1,26 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User, auth
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib import messages
+from django.utils import timezone
+
+
+from .forms import VideoForm
+from .models import FlixUser, Video
 
 
 def home(request):
     '''
     This is the 1st page users will see.
     '''
-    return render(request, 'pf/home.html', {})
+    videos = Video.objects.all()
+    return render(request, 'pf/home.html', {'videos': videos})
 
 def login(request):
     '''
-    Users will use this view to login.
+    Logs registered users in.
     '''
     if request.method == 'POST':
         username = request.POST['username']
@@ -22,7 +31,7 @@ def login(request):
             return redirect('home')
         else:
             messages.info(request, 'Incorrect username or password!')
-            return redirect('login')
+            return redirect('signup')
     else:
         return render(request, 'pf/login.html', {})
 
@@ -36,14 +45,14 @@ def signup(request):
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
         if password == confirm_password:
-            if User.objects.filter(username=username).exists():
+            if FlixUser.objects.filter(username=username).exists():
                 messages.info(request, 'User already exists!')
                 return redirect(signup)
-            elif User.objects.filter(email=email).exists():
+            elif FlixUser.objects.filter(email=email).exists():
                 messages,info(request, 'Email already exists!')
                 return redirect(signup)
             else:
-                user = User.objects.create_user(username=username, password=password, email=email)
+                user = FlixUser.objects.create_user(username=username, password=password, email=email)
                 user.save()
 
                 return redirect('login')
@@ -60,8 +69,18 @@ def logout(request):
     auth.logout(request)
     return redirect(home)
 
-def video(request):
+@login_required
+def upload_video(request):
     '''
-    Video view.
+    Uploads video.
     '''
-    return render(request, 'pf/video.html', {})
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES)
+        if form.is_valid():
+            video = form.save(commit=False)
+            video.author = request.user
+            video.save()
+            return redirect(home)
+    else:
+        form = VideoForm
+    return render(request, 'pf/video.html', {'form': form})
