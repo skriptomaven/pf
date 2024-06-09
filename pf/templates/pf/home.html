@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'pf/style.css' %}" />
 </head>
 
-<body>
+<body style="padding: 2px;">
     <nav class="navbar navbar-light bg-warning">
         <div class="container-fluid">
             {% if user.is_authenticated %}
@@ -51,7 +51,7 @@
         <a href="#" style="text-decoration: underline;">profile</a>
         <a href="{% url 'logout' %}" style="text-decoration: underline;">logout</a>
     </div>
-        <div class="vid-are" style="padding: 25%;">
+        <div class="vid-are" style="">
     {% for video in videos %}
         <h3>{{ video.title }}</h3>
         <video width="320" height="240" controls="controls">
@@ -62,7 +62,7 @@
      {% endfor %}
     </div>
     {% else %}
-    <div class="vid-are" style="padding: 25%;">
+    <div class="vid-are" style="">
     {% for video in videos %}
         <h3>{{ video.title }}</h3>
         <video width="320" height="240" controls="controls">
