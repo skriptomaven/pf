@@ -49,7 +49,7 @@ def signup(request):
                 messages.info(request, 'User already exists!')
                 return redirect(signup)
             elif FlixUser.objects.filter(email=email).exists():
-                messages,info(request, 'Email already exists!')
+                messages.info(request, 'Email already exists!')
                 return redirect(signup)
             else:
                 user = FlixUser.objects.create_user(username=username, password=password, email=email)
